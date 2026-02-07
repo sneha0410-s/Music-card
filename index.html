@@ -3,96 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Love ❤️</title>
+<title>For Sarthak ❤️</title>
 
 <style>
 
-/* ===== BODY ===== */
-body {
-  margin: 0;
-  overflow: hidden;
-  background: black;
-  font-family: 'Segoe UI', sans-serif;
+body{
+  margin:0;
+  background:black;
+  font-family:'Segoe UI',sans-serif;
+  overflow:hidden;
 }
 
-/* ===== MOVING OCEAN VIDEO ===== */
-#bgVideo {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  z-index: -2;
-  filter: brightness(0.45);
+/* ===== ENVELOPE PAGE ===== */
+#envelopePage{
+  position:absolute;
+  width:100%;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:linear-gradient(135deg,#000,#1a1a1a);
 }
 
-/* ===== COUPLE IMAGE OVERLAY ===== */
-.overlay-img {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 420px;
-  max-width: 90%;
-  opacity: 0.9;
-  z-index: -1;
-  filter: drop-shadow(0 0 25px rgba(255,255,255,0.25));
+.envelope{
+  width:200px;
+  height:130px;
+  background:#ff4d6d;
+  position:relative;
+  cursor:pointer;
+  border-radius:6px;
+  box-shadow:0 0 30px rgba(255,77,109,0.6);
+  transition:0.4s;
 }
 
-/* ===== PLAY BUTTON ===== */
-#playBtn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 16px 28px;
-  font-size: 18px;
-  border: none;
-  border-radius: 30px;
-  background: rgba(255,255,255,0.15);
-  color: white;
-  backdrop-filter: blur(10px);
-  cursor: pointer;
-  box-shadow: 0 0 20px rgba(255,255,255,0.4);
-  transition: 0.3s;
+.envelope:before{
+  content:"";
+  position:absolute;
+  top:-65px;
+  left:0;
+  width:0;
+  height:0;
+  border-left:100px solid transparent;
+  border-right:100px solid transparent;
+  border-bottom:65px solid #ff758f;
 }
 
-#playBtn:hover {
-  background: rgba(255,255,255,0.3);
+.envelope:hover{
+  transform:scale(1.08);
 }
 
-/* ===== LYRICS CONTAINER ===== */
-.lyrics {
-  position: absolute;
-  width: 100%;
-  top: 15%;
-  text-align: center;
-  padding: 0 20px;
+.openText{
+  color:white;
+  margin-top:20px;
+  font-size:18px;
+  opacity:0.8;
 }
 
-/* ===== EACH LYRIC LINE ===== */
-.lyric {
-  font-size: 28px;
-  color: rgba(255,255,255,0.35);
-  margin: 18px 0;
-  transition: 0.5s;
+/* ===== LYRIC PAGE ===== */
+#lyricPage{
+  display:none;
+  position:absolute;
+  width:100%;
+  height:100vh;
 }
 
-/* ===== GLOW WHEN ACTIVE ===== */
-.lyric.active {
-  color: #ffffff;
-  text-shadow:
-    0 0 10px #fff,
-    0 0 20px #ff9bd4,
-    0 0 40px #ff4da6;
-  transform: scale(1.08);
+#bgVideo{
+  position:fixed;
+  right:0;
+  bottom:0;
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+  z-index:-2;
+  filter:brightness(0.45);
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
-@media(max-width:600px) {
-  .lyric { font-size: 20px; }
-  .overlay-img { width: 280px; }
+.couple{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:420px;
+  max-width:90%;
+  filter:drop-shadow(0 0 25px rgba(255,255,255,0.25));
+}
+
+.heading{
+  position:absolute;
+  top:8%;
+  width:100%;
+  text-align:center;
+  color:white;
+  font-size:30px;
+  text-shadow:0 0 15px #ff9bd4;
+  padding:0 20px;
+}
+
+.lyricsBox{
+  position:absolute;
+  bottom:22%;
+  width:100%;
+  text-align:center;
+  color:white;
+  font-size:20px;
+  line-height:1.8;
+  padding:0 25px;
+  text-shadow:0 0 10px rgba(255,255,255,0.6);
+}
+
+/* ===== PROPOSAL PAGE ===== */
+#proposalPage{
+  display:none;
+  position:absolute;
+  width:100%;
+  height:100vh;
+  background:linear-gradient(135deg,#000,#2b0015);
+  color:white;
+  text-align:center;
+}
+
+.proposalText{
+  position:absolute;
+  top:35%;
+  width:100%;
+  font-size:38px;
+  text-shadow:0 0 20px #ff4da6;
+  padding:0 20px;
+}
+
+.btns{
+  position:absolute;
+  top:55%;
+  width:100%;
+}
+
+button{
+  padding:14px 26px;
+  margin:10px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background:#ff4d6d;
+  color:white;
+  box-shadow:0 0 15px #ff4d6d;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .heading{font-size:22px;}
+  .lyricsBox{font-size:16px;}
+  .proposalText{font-size:26px;}
+  .couple{width:280px;}
 }
 
 </style>
@@ -100,83 +168,81 @@ body {
 
 <body>
 
-<!-- ===== OCEAN BACKGROUND VIDEO ===== -->
-<video autoplay muted loop id="bgVideo">
-  <source src="ocean.mp4" type="video/mp4">
-</video>
+<!-- ===== ENVELOPE ===== -->
+<div id="envelopePage">
+  <div class="envelope" onclick="openLetter()"></div>
+  <div class="openText">Click to open ❤️</div>
+</div>
 
-<!-- ===== COUPLE IMAGE (JPG SUPPORTED) ===== -->
-<img src="couple.jpg" class="overlay-img">
+<!-- ===== LYRIC PAGE ===== -->
+<div id="lyricPage">
 
-<!-- ===== MUSIC ===== -->
-<audio id="song" preload="auto" playsinline>
-  <source src="haan-tu-hai.mp3" type="audio/mp3">
-</audio>
+  <video autoplay muted loop id="bgVideo">
+    <source src="ocean.mp4" type="video/mp4">
+  </video>
 
-<!-- ===== PLAY BUTTON ===== -->
-<button id="playBtn">▶ Play</button>
+  <audio id="song">
+    <source src="haan-tu-hai.mp3" type="audio/mp3">
+  </audio>
 
-<!-- ===== LYRICS ===== -->
-<div class="lyrics">
-
-  <!-- ✏️ REPLACE LINES WITH YOUR LYRICS -->
-
-  <div class="lyric" data-time="4">
-    (Koi bhi esa lamha nahi hai)
+  <div class="heading">
+    I felt it hard for you when KK sang… ❤️
   </div>
 
-  <div class="lyric" data-time="11">
-    (Jisme mein mere tu hota nahi hai)
+  <img src="couple.jpg" class="couple">
+
+  <div class="lyricsBox">
+    (Write your lyrics paragraph here)<br>
+    Koi bhi esa lamha nahi hai<br>
+    jisme mere tu hota nahi hai <br>
+    Mai so bhi jau raaton mein lekin <br>
+    Tu hai ki mujhemein sota nahi hai <br>
+    Haan tu hai haan tu hai meri baaton mein tu hai <br>
+    Mere khwaabo mein tu, yaadon mein tu, iraado mein tu hai...<br>
   </div>
 
-  <div class="lyric" data-time="16">
-    (Mai so bhi jau raaton mein lekin)
+</div>
+
+<!-- ===== PROPOSAL PAGE ===== -->
+<div id="proposalPage">
+
+  <div class="proposalText">
+    Will you be my Valentine? 💍❤️
   </div>
 
-  <div class="lyric" data-time="22">
-    (Tu hai ki mujhmein sota nahi hai)
-  </div>
-
-  <div class="lyric" data-time="33">
-    (Haan tu hai haan tu hai meri baaton mein tu hai)
-  </div>
-
- <div class="lyric" data-time="39">
-    (Mere khwaabo mein tu yaadon mein tu iraado mein tu hai...)
+  <div class="btns">
+    <button onclick="yesClicked()">Yes 💖</button>
+    <button onclick="noMove(this)">No 🥺</button>
   </div>
 
 </div>
 
 <script>
-<script>
-<script>
 
-const song = document.getElementById("song");
-const playBtn = document.getElementById("playBtn");
+function openLetter(){
 
-playBtn.addEventListener("click", () => {
+  document.getElementById("envelopePage").style.display="none";
+  document.getElementById("lyricPage").style.display="block";
 
-  song.currentTime = 0;
-  song.muted = false;
-  song.volume = 1;
+  const song=document.getElementById("song");
+  song.play();
 
-  const playPromise = song.play();
+  // After lyrics → go to proposal page
+  setTimeout(()=>{
+    document.getElementById("lyricPage").style.display="none";
+    document.getElementById("proposalPage").style.display="block";
+  },25000); // ⏱️ change timing if needed
+}
 
-  if (playPromise !== undefined) {
-    playPromise.then(() => {
-      playBtn.style.display = "none";
-    }).catch(() => {
-      alert("Tap again to play music ❤️");
-    });
-  }
+function yesClicked(){
+  alert("Yayyy 💖 You’re mine forever now 😭❤️");
+}
 
-});
-
-</script>
-
-
-</script>
-
+function noMove(btn){
+  btn.style.position='absolute';
+  btn.style.top=Math.random()*80+'%';
+  btn.style.left=Math.random()*80+'%';
+}
 
 </script>
 
