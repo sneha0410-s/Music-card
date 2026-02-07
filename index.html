@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<style>
+
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== MOVING OCEAN VIDEO ===== */
+#bgVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.45);
+}
+
+/* ===== COUPLE IMAGE OVERLAY ===== */
+.overlay-img {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 420px;
+  max-width: 90%;
+  opacity: 0.9;
+  z-index: -1;
+  filter: drop-shadow(0 0 25px rgba(255,255,255,0.25));
+}
+
+/* ===== PLAY BUTTON ===== */
+#playBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+  transition: 0.3s;
+}
+
+#playBtn:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ===== LYRICS CONTAINER ===== */
+.lyrics {
+  position: absolute;
+  width: 100%;
+  top: 15%;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* ===== EACH LYRIC LINE ===== */
+.lyric {
+  font-size: 28px;
+  color: rgba(255,255,255,0.35);
+  margin: 18px 0;
+  transition: 0.5s;
+}
+
+/* ===== GLOW WHEN ACTIVE ===== */
+.lyric.active {
+  color: #ffffff;
+  text-shadow:
+    0 0 10px #fff,
+    0 0 20px #ff9bd4,
+    0 0 40px #ff4da6;
+  transform: scale(1.08);
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media(max-width:600px) {
+  .lyric { font-size: 20px; }
+  .overlay-img { width: 280px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ===== OCEAN BACKGROUND VIDEO ===== -->
+<video autoplay muted loop id="bgVideo">
+  <source src="ocean.mp4" type="video/mp4">
+</video>
+
+<!-- ===== COUPLE IMAGE (JPG SUPPORTED) ===== -->
+<img src="couple.jpg" class="overlay-img">
+
+<!-- ===== MUSIC ===== -->
+<audio id="song">
+  <source src="haan-tu-hai.mp3" type="audio/mp3">
+</audio>
+
+<!-- ===== PLAY BUTTON ===== -->
+<button id="playBtn">▶ Play</button>
+
+<!-- ===== LYRICS ===== -->
+<div class="lyrics">
+
+  <!-- ✏️ REPLACE LINES WITH YOUR LYRICS -->
+
+  <div class="lyric" data-time="4">
+    (Koi bhi esa lamha nahi hai)
+  </div>
+
+  <div class="lyric" data-time="11">
+    (Jisme mein mere tu hota nahi hai)
+  </div>
+
+  <div class="lyric" data-time="16">
+    (Mai so bhi jau raaton mein lekin)
+  </div>
+
+  <div class="lyric" data-time="22">
+    (Tu hai ki mujhmein sota nahi hai)
+  </div>
+
+  <div class="lyric" data-time="33">
+    (Haan tu hai haan tu hai meri baaton mein tu hai)
+  </div>
+
+ <div class="lyric" data-time="39">
+    (Mere khwaabo mein tu yaadon mein tu iraado mein tu hai...)
+  </div>
+
+</div>
+
+<script>
+
+const song = document.getElementById("song");
+const playBtn = document.getElementById("playBtn");
+const lyrics = document.querySelectorAll(".lyric");
+
+/* ===== PLAY + AUTO HIDE BUTTON ===== */
+playBtn.addEventListener("click", () => {
+  song.play();
+  playBtn.style.display = "none"; // hides button
+});
+
+/* ===== LYRICS SYNC ===== */
+song.addEventListener("timeupdate", () => {
+  const current = song.currentTime;
+
+  lyrics.forEach(line => {
+    const time = line.getAttribute("data-time");
+
+    if (current >= time - 1 && current < time + 2) {
+      line.classList.add("active");
+    } else {
+      line.classList.remove("active");
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>
+
