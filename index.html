@@ -148,31 +148,24 @@ body {
 </div>
 
 <script>
+<script>
 
 const song = document.getElementById("song");
 const playBtn = document.getElementById("playBtn");
-const lyrics = document.querySelectorAll(".lyric");
 
-/* ===== PLAY + AUTO HIDE BUTTON ===== */
 playBtn.addEventListener("click", () => {
-  song.play();
-  playBtn.style.display = "none"; // hides button
-});
 
-/* ===== LYRICS SYNC ===== */
-song.addEventListener("timeupdate", () => {
-  const current = song.currentTime;
-
-  lyrics.forEach(line => {
-    const time = line.getAttribute("data-time");
-
-    if (current >= time - 1 && current < time + 2) {
-      line.classList.add("active");
-    } else {
-      line.classList.remove("active");
-    }
+  song.volume = 1;
+  song.play().then(() => {
+    playBtn.style.display = "none";
+  }).catch(err => {
+    alert("Music couldn't play. Check file name.");
   });
+
 });
+
+</script>
+
 
 </script>
 
