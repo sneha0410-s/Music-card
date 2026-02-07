@@ -52,7 +52,7 @@ body{
 }
 
 /* Couple Image Background */
-.bg-img{
+#bgVideo{
   position:absolute;
   width:100%;
   height:100%;
@@ -120,14 +120,17 @@ button:hover{transform:scale(1.1);}
 
 <!-- PAGE 2 : Song + Lyrics -->
 <div class="page" id="page2">
- 
- <div class="lyrics-box">
+  <video autoplay muted loop id="bgVideo">
+    <source src="ocean.mp4" type="video/mp4">
+  </video>
+
+  <div class="lyrics-box">
     <h1>I felt it hard for you when KK sang</h1>
 
     <p>
-      <br>Every word felt like my own heart speaking…
-      Every line reminded me of you…
-      And in that moment, I knew…
+      Every word felt like my own heart speaking…<br>
+      Every line reminded me of you<br>
+      And in that moment, I knew…<br>
       It was always you ❤️<br>
     </p>
   </div>
