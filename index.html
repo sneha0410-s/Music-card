@@ -109,7 +109,7 @@ body {
 <img src="couple.jpg" class="overlay-img">
 
 <!-- ===== MUSIC ===== -->
-<audio id="song">
+<audio id="song" preload="auto" playsinline>
   <source src="haan-tu-hai.mp3" type="audio/mp3">
 </audio>
 
@@ -149,20 +149,31 @@ body {
 
 <script>
 <script>
+<script>
 
 const song = document.getElementById("song");
 const playBtn = document.getElementById("playBtn");
 
 playBtn.addEventListener("click", () => {
 
+  song.currentTime = 0;
+  song.muted = false;
   song.volume = 1;
-  song.play().then(() => {
-    playBtn.style.display = "none";
-  }).catch(err => {
-    alert("Music couldn't play. Check file name.");
-  });
+
+  const playPromise = song.play();
+
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+      playBtn.style.display = "none";
+    }).catch(() => {
+      alert("Tap again to play music ❤️");
+    });
+  }
 
 });
+
+</script>
+
 
 </script>
 
