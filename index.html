@@ -3,19 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Sarthak ❤️</title>
+<title>Proposal</title>
 
 <style>
-
 body{
   margin:0;
+  font-family: 'Segoe UI', sans-serif;
   background:black;
-  font-family:'Segoe UI',sans-serif;
+  color:white;
   overflow:hidden;
 }
 
-/* ===== ENVELOPE PAGE ===== */
-#envelopePage{
+.page{
   position:absolute;
   width:100%;
   height:100vh;
@@ -23,215 +22,159 @@ body{
   justify-content:center;
   align-items:center;
   flex-direction:column;
-  background:linear-gradient(135deg,#000,#1a1a1a);
+  opacity:0;
+  pointer-events:none;
+  transition:1s;
 }
 
+.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* Envelope */
 .envelope{
-  width:200px;
-  height:130px;
+  width:220px;
+  height:140px;
   background:#ff4d6d;
   position:relative;
   cursor:pointer;
-  border-radius:6px;
-  box-shadow:0 0 30px rgba(255,77,109,0.6);
-  transition:0.4s;
+  border-radius:10px;
 }
 
 .envelope:before{
   content:"";
   position:absolute;
-  top:-65px;
-  left:0;
-  width:0;
-  height:0;
-  border-left:100px solid transparent;
-  border-right:100px solid transparent;
-  border-bottom:65px solid #ff758f;
+  top:-70px;
+  border-left:110px solid transparent;
+  border-right:110px solid transparent;
+  border-bottom:70px solid #ff758f;
 }
 
-.envelope:hover{
-  transform:scale(1.08);
-}
-
-.openText{
-  color:white;
-  margin-top:20px;
-  font-size:18px;
-  opacity:0.8;
-}
-
-/* ===== LYRIC PAGE ===== */
-#lyricPage{
-  display:none;
+/* Couple Image Background */
+.bg-img{
   position:absolute;
   width:100%;
-  height:100vh;
-}
-
-#bgVideo{
-  position:fixed;
-  right:0;
-  bottom:0;
-  min-width:100%;
-  min-height:100%;
+  height:100%;
   object-fit:cover;
-  z-index:-2;
-  filter:brightness(0.45);
+  z-index:-1;
+  filter:brightness(45%);
 }
 
-.heading{
-  position:absolute;
-  top:8%;
-  width:100%;
+.lyrics-box{
+  max-width:80%;
   text-align:center;
-  color:white;
-  font-size:30px;
-  text-shadow:0 0 15px #ff9bd4;
-  padding:0 20px;
+  animation:fadeUp 3s ease forwards;
 }
 
-.lyricsBox{
-  position:absolute;
-  bottom:22%;
-  width:100%;
-  text-align:center;
-  color:white;
-  font-size:20px;
-  line-height:1.8;
-  padding:0 25px;
-  text-shadow:0 0 10px rgba(255,255,255,0.6);
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(40px);} 
+  to{opacity:1; transform:translateY(0);} 
 }
 
-/* ===== PROPOSAL PAGE ===== */
-#proposalPage{
-  display:none;
-  position:absolute;
-  width:100%;
-  height:100vh;
-  background:linear-gradient(135deg,#000,#2b0015);
-  color:white;
-  text-align:center;
+h1{
+  margin-bottom:20px;
 }
 
-.proposalText{
-  position:absolute;
-  top:35%;
-  width:100%;
-  font-size:38px;
-  text-shadow:0 0 20px #ff4da6;
-  padding:0 20px;
-}
-
+/* Proposal Buttons */
 .btns{
-  position:absolute;
-  top:55%;
-  width:100%;
+  margin-top:30px;
 }
 
 button{
-  padding:14px 26px;
+  padding:12px 26px;
   margin:10px;
-  font-size:18px;
   border:none;
-  border-radius:30px;
+  border-radius:25px;
+  font-size:16px;
   cursor:pointer;
-  background:#ff4d6d;
-  color:white;
-  box-shadow:0 0 15px #ff4d6d;
   transition:0.3s;
 }
 
-button:hover{
-  transform:scale(1.1);
+.yes{background:#00ff88;}
+.no{background:#ff4d4d; color:white;}
+
+button:hover{transform:scale(1.1);} 
+
+/* Forever Page */
+.forever{
+  font-size:40px;
+  text-align:center;
+  animation:glow 2s infinite alternate;
 }
 
-/* MOBILE */
-@media(max-width:600px){
-  .heading{font-size:22px;}
-  .lyricsBox{font-size:16px;}
-  .proposalText{font-size:26px;}
-  .couple{width:280px;}
+@keyframes glow{
+  from{text-shadow:0 0 10px #ff4d6d;}
+  to{text-shadow:0 0 25px #ff99aa,0 0 40px #ff4d6d;}
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- ===== ENVELOPE ===== -->
-<div id="envelopePage">
+<!-- PAGE 1 : Envelope -->
+<div class="page active" id="page1">
   <div class="envelope" onclick="openLetter()"></div>
-  <div class="openText">Click to open ❤️</div>
+  <p>Click to open ❤️</p>
 </div>
 
-<!-- ===== LYRIC PAGE ===== -->
-<div id="lyricPage">
+<!-- PAGE 2 : Song + Lyrics -->
+<div class="page" id="page2">
+ 
+ <div class="lyrics-box">
+    <h1>I felt it hard for you when KK sang</h1>
 
-  <video autoplay muted loop id="bgVideo">
-    <source src="ocean.mp4" type="video/mp4">
-  </video>
-
-  <audio id="song">
-    <source src="haan-tu-hai.mp3" type="audio/mp3">
-  </audio>
-
-  <div class="heading">
-    I felt it hard for you when KK sang… ❤️
+    <p>
+      <br>Every word felt like my own heart speaking…
+      Every line reminded me of you…
+      And in that moment, I knew…
+      It was always you ❤️<br>
+    </p>
   </div>
 
-   <div class="lyricsBox">
-    Koi bhi esa lamha nahi hai<br>
-    jisme mere tu hota nahi hai<br>
-    Mai so bhi jau raaton mein lekin<br>
-    Tu hai ki mujhmein sota nahi hai<br>
-    Haan tu hai haan tu hai..<br>
-    meri baaton mein tu hai<br>
-    mere khwaabo mein tu <br>
-    yaadon mein tu<br>
-    iraado mein tu hai<br>
-  </div>
-
+  <audio id="song" src="song.mp3"></audio>
 </div>
 
-<!-- ===== PROPOSAL PAGE ===== -->
-<div id="proposalPage">
-
-  <div class="proposalText">
-    Will you be mine forever? 💍❤️
-  </div>
-
+<!-- PAGE 3 : Proposal -->
+<div class="page" id="page3">
+  <h1>Will You Be Mine Forever? 💍</h1>
   <div class="btns">
-    <button onclick="yesClicked()">Yes 💖</button>
-    <button onclick="noMove(this)">No 🥺</button>
+    <button class="yes" onclick="yesClicked()">Yes ❤️</button>
+    <button class="no" onclick="moveNo(this)">No 😢</button>
   </div>
+</div>
 
+<!-- PAGE 4 : Forever Page -->
+<div class="page" id="page4">
+  <div class="forever">
+    You Are Mine Forever Now ❤️✨
+  </div>
 </div>
 
 <script>
 
 function openLetter(){
-
-  document.getElementById("envelopePage").style.display="none";
-  document.getElementById("lyricPage").style.display="block";
+  document.getElementById("page1").classList.remove("active");
+  document.getElementById("page2").classList.add("active");
 
   const song=document.getElementById("song");
   song.play();
 
-  // After lyrics → go to proposal page
-  setTimeout(()=>{
-    document.getElementById("lyricPage").style.display="none";
-    document.getElementById("proposalPage").style.display="block";
-  },25000); // ⏱️ change timing if needed
+  song.onended=function(){
+    document.getElementById("page2").classList.remove("active");
+    document.getElementById("page3").classList.add("active");
+  }
 }
 
 function yesClicked(){
-  alert("Yayyy 💖 You’re mine forever now 😭❤️");
+  document.getElementById("page3").classList.remove("active");
+  document.getElementById("page4").classList.add("active");
 }
 
-function noMove(btn){
-  btn.style.position='absolute';
-  btn.style.top=Math.random()*80+'%';
-  btn.style.left=Math.random()*80+'%';
+function moveNo(btn){
+  btn.style.position="absolute";
+  btn.style.top=Math.random()*80+"%";
+  btn.style.left=Math.random()*80+"%";
 }
 
 </script>
